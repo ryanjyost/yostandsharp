@@ -142,7 +142,6 @@
 	#document {
 		width: 8.5in;
 		/*width: 100%;*/
-		border: 1px solid red;
 		min-height: 100vh;
 		margin: auto;
 		padding-top: 1in;
