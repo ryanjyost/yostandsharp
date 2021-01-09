@@ -64,7 +64,7 @@
 			{ type: 'slugline', content: `ON SCREEN` },
 			{
 				type: 'action',
-				content: `The website for RYAN YOST & COREY SHARP. It's simple yet sophisticated, like the screenwriting duo themselves.`,
+				content: `The website for RYAN YOST & COREY SHARP.`,
 			},
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{ type: 'dialogue', content: `Welcome to our-` },
@@ -76,7 +76,7 @@
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{
 				type: 'dialogue',
-				content: `Kinda had this whole thing planned...`,
+				content: `Kinda had this whole big thing planned.`,
 			},
 			{ type: 'character', content: `Corey (V.O.)` },
 			{
@@ -87,7 +87,7 @@
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{
 				type: 'dialogue',
-				content: `Yeah, you're right. Good call.`,
+				content: `Damn, you're right. Good call.`,
 			},
 			{
 				type: 'slugline',
@@ -95,43 +95,47 @@
 			},
 			{
 				type: 'action',
-				content: `A) <b>FRANZ MADE ME FAMOUS</b> - A young, wannabe freedom fighter grapples with the nature of his work when he and his ragtag crew fumble their way through a life-defining mission to assassinate Franz Ferdinand, the royal dignitary of imperial Austria whose demise ignited the first world war.`,
+				content: `a) <b>FRANZ MADE ME FAMOUS</b> - A young, wannabe freedom fighter grapples with the nature of his work when he and his ragtag crew fumble their way through a life-defining mission to assassinate Franz Ferdinand, the royal dignitary of imperial Austria whose demise ignited the first world war.`,
 			},
 			{
 				type: 'action',
 				disableEdit: true,
-				content: `feature / comedy / <a href="https://google.com" style="color: #0000EE; font-size: 16px;">click to read</a>`,
+				skipAnimation: true,
+				content: `> <a href="/scripts/franz-made-me-famous" style="color: #0000EE; font-size: 16px;">click to read</a>`,
 			},
-			{ type: 'action', content: '', disableEdit: true },
+			// { type: 'action', content: '', disableEdit: true },
 			{
 				type: 'action',
-				content: `B) <b>SAVED</b> - After God finally gives up on Earth in 2020, a disillusioned but determined Jesus has one last chance to save humanity from itself and prove daddy wrong - by getting down and dirty in U.S. politics and setting his sights on the White House.`,
-			},
-			{
-				type: 'action',
-				disableEdit: true,
-				content: `pilot / half hour comedy / <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
-			},
-			{ type: 'action', content: '', disableEdit: true },
-			{
-				type: 'action',
-				content: `C) <b>COPING</b> - When a rudderless twentysomething accidentally gets hired as an enforcer for a mysterious criminal organization, she’ll need her potent personality and weed dealer friend to excel in the new gig... and simply stay alive.`,
+				content: `b) <b>SAVED</b> - After God finally gives up on Earth in 2020, a disillusioned but determined Jesus has one last chance to save humanity from itself and prove daddy wrong - by getting down and dirty in U.S. politics and setting his sights on the White House.`,
 			},
 			{
 				type: 'action',
 				disableEdit: true,
-				content: `pilot / half hour comedy / <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+				skipAnimation: true,
+				content: `> <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
 			},
-			{ type: 'action', content: '', disableEdit: true },
+			// { type: 'action', content: '', disableEdit: true },
 			{
 				type: 'action',
-				content: `D) <b>MAC'S DAD COMES OUT</b> - When Luther comes out as gay at his parole hearing, the gang can’t agree on whether he should stay in prison.
-`,
+				content: `c) <b>COPING</b> - When a rudderless twentysomething accidentally gets hired as an enforcer for a mysterious criminal organization, she’ll need her potent personality and weed dealer friend to excel in the new gig... and simply stay alive.`,
 			},
 			{
 				type: 'action',
 				disableEdit: true,
-				content: `spec / It's Always Sunny in Philadelphia /  <a href="https://drive.google.com/file/d/1UdV_O2MTEj6cMHxFk_0UtYumeXBBYMR1/view" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+				skipAnimation: true,
+				content: `> <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+			},
+			// { type: 'action', content: '', disableEdit: true },
+			{
+				type: 'action',
+				content: `d) <b>MAC'S DAD COMES OUT</b> - When Luther comes out as gay at his parole hearing, the gang can’t agree on whether he should stay in prison. (Always Sunny in Philadelphia spec))
+			`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				skipAnimation: true,
+				content: `> <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
 			},
 
 			// eyes reflecting on the screen. They are wide, intrigued. The eyes
@@ -145,7 +149,55 @@
 		// TODO pause at periods
 		// TODO bold stuff after the section is typed out
 		// TODO skip animation
-		intervalId = setInterval(() => {
+
+		function calculateNextCounter(latestChar, currentSection) {
+			const counters = {
+				'.': 400,
+				'-': 200,
+				',': 300,
+				default: 5,
+			};
+
+			if (currentSection.skipAnimation) return 1;
+
+			function periodHandler() {
+				if (currentSection.type === 'character') {
+					return counters.default;
+				}
+
+				return counters[latestChar];
+			}
+
+			switch (latestChar) {
+				case '.':
+					return periodHandler();
+				default:
+					return counters[latestChar] || counters.default;
+			}
+		}
+
+		let counter;
+		let latestChar;
+
+		const myFunction = function () {
+			function addNewCharacter() {
+				// update latest char so no how long to pause
+				latestChar = currentSection.content.slice(
+					0,
+					currentSection.visible.length + 1
+				)[currentSection.visible.length];
+
+				// increment visible by 1
+				currentSection.visible = currentSection.content.slice(
+					0,
+					currentSection.visible.length + 1
+				);
+
+				// update visible section
+				visibleSections[currentSectionIndex] = currentSection;
+			}
+
+			// initiate first section
 			if (!visibleSections.length) {
 				visibleSections[currentSectionIndex] = {
 					...sections[currentSectionIndex],
@@ -154,31 +206,72 @@
 			}
 
 			const currentSection = { ...visibleSections[currentSectionIndex] };
+			// console.log({ currentSectionIndex, currentSection, visibleSections });
 
-			if (!currentSection) {
-				visibleSections[currentSectionIndex] = {
-					...sections[currentSectionIndex],
-					visible: '',
-				};
-			} else if (
+			// all sections are showing, so don't do anything
+			if (sections.length === currentSectionIndex) {
+				// console.log('yost 1');
+				return;
+			} else if (!currentSection || !currentSection.content) {
+				// console.log('yost 2');
+				// visibleSections[currentSectionIndex] = {
+				// 	...sections[currentSectionIndex + 1],
+				// 	visible: '',
+				// };
+
+				currentSectionIndex++;
+			}
+			// else if (currentSection.skipAnimation) {
+			// 	// console.log('skip', { currentSection, currentSectionIndex });
+			//
+			// 	visibleSections[currentSectionIndex].visible =
+			// 		visibleSections[currentSectionIndex].content;
+			//
+			// 	currentSectionIndex++;
+			//
+			// 	visibleSections[currentSectionIndex + 1] = {
+			// 		...sections[currentSectionIndex + 1],
+			// 		visible: '',
+			// 	};
+			// }
+			//
+			else if (
+				currentSection.visible &&
+				currentSection.content &&
 				currentSection.content.length === currentSection.visible.length
 			) {
-				visibleSections[currentSectionIndex].active = false;
+				// console.log('all is visible', { currentSection, currentSectionIndex });
 				currentSectionIndex++;
 				visibleSections[currentSectionIndex] = {
 					...sections[currentSectionIndex],
 					visible: '',
 				};
-			} else {
-				currentSection.active = true;
-				currentSection.visible = currentSection.content.slice(
-					0,
-					currentSection.visible.length + 1
-				);
+				// return setTimeout(myFunction, 500);
+			} else if (!visibleSections[currentSectionIndex]) {
+				// console.log('yost 4');
+				visibleSections[currentSectionIndex] = {
+					...sections[currentSectionIndex],
+					visible: '',
+				};
 
-				visibleSections[currentSectionIndex] = currentSection;
+				currentSectionIndex++;
+			} else {
+				addNewCharacter();
 			}
-		}, 40);
+
+			//================================================
+			// Calculate counter time
+			counter = calculateNextCounter(latestChar, currentSection);
+
+			// console.log({ counter, currentSectionIndex });
+
+			if (currentSectionIndex < sections.length) {
+				// console.log('run timeout');
+				setTimeout(myFunction, counter);
+			}
+		};
+
+		setTimeout(myFunction, counter);
 	}
 
 	onMount(() => {
@@ -187,7 +280,7 @@
 
 		if (!window.localStorage.getItem('skipAnimation')) {
 			runTypingAnimation();
-			window.localStorage.setItem('skipAnimation', 'true');
+			// window.localStorage.setItem('skipAnimation', 'true');
 		} else {
 			visibleSections = [...sections].map((s) => {
 				return { ...s, visible: s.content };
@@ -197,9 +290,7 @@
 
 	// $: console.log({ wsections, currentSectionIndex, visibleSections });
 
-	$: if (sections && currentSectionIndex >= sections.length) {
-		clearInterval(intervalId);
-	}
+	$: console.log({ visibleSections });
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
@@ -210,9 +301,9 @@
 
 <div id="document">
 	{#if device}
-		{#each visibleSections as { type, visible, active, disableEdit }}
+		{#each visibleSections as { type, visible, active, disableEdit }, i}
 			<div
-				class="{type} line {active ? 'active' : ''}"
+				class="{type} line {i === currentSectionIndex ? 'active' : ''}"
 				contenteditable={!disableEdit}
 			>
 				{@html visible}
