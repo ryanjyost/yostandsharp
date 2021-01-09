@@ -40,7 +40,7 @@
 			return `a ${type}.`;
 		}
 
-		const flipSideText = `The visitor ROTATES their phone so that it's horizontal, easier to read.`;
+		const flipSideText = `The reader ROTATES their phone so that it's horizontal, easier to read.`;
 
 		return `${
 			['a', 'e', 'i', 'o', 'u'].includes(device.device.brand[0].toLowerCase())
@@ -59,16 +59,20 @@
 			{ type: 'slugline', content: `INT. UNKNOWN - ${slugTime}` },
 			{
 				type: 'action',
-				content: `A curious VISITOR stares at the screen of ${deviceToDisplay} The time reads <b>${time}<b>.`,
+				content: `A curious READER stares at the screen of ${deviceToDisplay} The time reads <b>${time}<b>.`,
 			},
 			{ type: 'slugline', content: `ON SCREEN` },
 			{
 				type: 'action',
-				content: `The website for RYAN YOST & COREY SHARP.`,
+				content: `The portfolio website for RYAN YOST & COREY SHARP.`,
+			},
+			{
+				type: 'action',
+				content: `Their contact info is prominent: <b>412.841.1697</b> and <b>ryanjyost@gmail.com</b>.`,
 			},
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{ type: 'dialogue', content: `Welcome to our-` },
-			{ type: 'character', content: `Corey (V.O.)` },
+			{ type: 'character', content: `Corey (V.O.)`, skipAnimation: true },
 			{
 				type: 'dialogue',
 				content: `Just show them the scripts.`,
@@ -85,7 +89,7 @@
 			},
 			{
 				type: 'action',
-				content: 'Beat. The visitor wonders what the hell is going on.',
+				content: 'Beat. The reader wonders what the hell is going on.',
 			},
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{
@@ -131,7 +135,7 @@
 			// { type: 'action', content: '', disableEdit: true },
 			{
 				type: 'action',
-				content: `d) <b>MAC'S DAD COMES OUT</b> - When Luther comes out as gay at his parole hearing, the gang can’t agree on whether he should stay in prison. (Always Sunny in Philadelphia spec))
+				content: `d) <b>MAC'S DAD COMES OUT</b> - When Luther comes out as gay at his parole hearing, the gang can’t agree on whether he should stay in prison. (Always Sunny in Philadelphia spec)
 			`,
 			},
 			{
@@ -158,7 +162,7 @@
 				'.': 400,
 				'-': 200,
 				',': 300,
-				default: 5,
+				default: 25,
 			};
 
 			if (currentSection.skipAnimation) return 1;
