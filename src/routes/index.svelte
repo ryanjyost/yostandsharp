@@ -71,23 +71,23 @@
 			{ type: 'character', content: `Corey (V.O.)` },
 			{
 				type: 'dialogue',
-				content: `Just the scripts, bud.`,
+				content: `Just show them the scripts.`,
 			},
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{
 				type: 'dialogue',
-				content: `Kinda had this whole big thing planned.`,
+				content: `Kinda had this whole big thing planned, though.`,
 			},
 			{ type: 'character', content: `Corey (V.O.)` },
 			{
 				type: 'dialogue',
-				content: `Short and sweet.`,
+				content: `People are busy.`,
 			},
-			{ type: 'action', content: 'Beat. Awkward silence. It lingers.' },
+			{ type: 'action', content: 'Beat. The visitor wonders what the hell is going on.' },
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{
 				type: 'dialogue',
-				content: `Damn, you're right. Good call.`,
+				content: `You're right. Good call.`,
 			},
 			{
 				type: 'slugline',
@@ -112,7 +112,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+				content: `> <a href="/scripts/saved" style="color: #551a8b; font-size: 16px;">click to read</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -123,7 +123,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+				content: `> <a href="/scripts/coping" style="color: #551a8b; font-size: 16px;">click to read</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -135,7 +135,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+				content: `> <a href="/scripts/always-sunny-spec" style="color: #551a8b; font-size: 16px;">click to read</a>`,
 			},
 
 			// eyes reflecting on the screen. They are wide, intrigued. The eyes
@@ -315,22 +315,22 @@
 	{/if}
 </div>
 
-<nav>
-	<ul>
-		<li>
-			<a href=".">home</a>
-		</li>
-		<li>
-			<a href="about">about</a>
-		</li>
+<!--<nav>-->
+<!--	<ul>-->
+<!--		<li>-->
+<!--			<a href=".">home</a>-->
+<!--		</li>-->
+<!--		<li>-->
+<!--			<a href="about">about</a>-->
+<!--		</li>-->
 
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li>
-			<a rel="prefetch" href="blog">blog</a>
-		</li>
-	</ul>
-</nav>
+<!--		&lt;!&ndash; for the blog link, we're using rel=prefetch so that Sapper prefetches-->
+<!--		     the blog data when we hover over the link or tap it on a touchscreen &ndash;&gt;-->
+<!--		<li>-->
+<!--			<a rel="prefetch" href="blog">blog</a>-->
+<!--		</li>-->
+<!--	</ul>-->
+<!--</nav>-->
 <!--<iframe-->
 <!--	src="https://yostandsharp.s3.us-east-2.amazonaws.com/Macs+Dad+Comes+Out+-+Always+Sunny+Spec+-+Yost%2BSharp.pdf"-->
 <!--	width="{windowWidth}"-->
