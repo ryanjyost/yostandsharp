@@ -13,5 +13,6 @@
 		font-family: CourierPrime, Courier, monospace, NotoSerifSC, 'Noto Serif SC';
 		letter-spacing: -0.3px;
 		line-height: 1;
+		text-align: left;
 	}
 </style>

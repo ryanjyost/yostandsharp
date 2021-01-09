@@ -22,7 +22,7 @@
 	function setSlugTime() {
 		const now = new Date();
 		const hours = now.getHours();
-		if (hours > 19 || hours < 4) {
+		if (hours > 18 || hours < 4) {
 			slugTime = 'Night';
 		} else {
 			slugTime = 'Day';
@@ -32,13 +32,19 @@
 	function setDevice(userAgent) {
 		const deviceDetector = new DeviceDetector();
 		device = deviceDetector.parse(userAgent);
+		const type = `${
+			device.device.type === 'desktop' ? 'desktop computer' : device.device.type
+		}`;
+
+		if (!device.device.brand) {
+			return `a ${type}`;
+		}
+
 		return `${
 			['a', 'e', 'i', 'o', 'u'].includes(device.device.brand[0].toLowerCase())
 				? 'an'
 				: 'a'
-		} ${device.device.brand} ${
-			device.device.type === 'desktop' ? 'desktop computer' : device.device.type
-		}`;
+		} ${device.device.brand} ${type}`;
 	}
 
 	function generateContent() {
@@ -46,10 +52,82 @@
 		const time = format(new Date(), 'h:mm a');
 
 		sections = [
-			{ type: 'slugline', content: 'ON SCREEN' },
+			{ type: 'slugline', content: `INT. UNKNOWN - ${slugTime}` },
 			{
 				type: 'action',
-				content: `Text sprawls across a blank page on ${deviceToDisplay}. The time reads <b>${time}<b>.`,
+				content: `A curious VISITOR stares at the screen of ${deviceToDisplay}. The time reads <b>${time}<b>.`,
+			},
+			{ type: 'slugline', content: `ON SCREEN` },
+			{
+				type: 'action',
+				content: `The website for RYAN YOST & COREY SHARP. It's simple yet sophisticated, like the screenwriting duo themselves.`,
+			},
+			{ type: 'character', content: `Ryan (V.O.)` },
+			{ type: 'dialogue', content: `Welcome to our-` },
+			{ type: 'character', content: `Corey (V.O.)` },
+			{
+				type: 'dialogue',
+				content: `Just the scripts, bud.`,
+			},
+			{ type: 'character', content: `Ryan (V.O.)` },
+			{
+				type: 'dialogue',
+				content: `Kinda had this whole thing planned...`,
+			},
+			{ type: 'character', content: `Corey (V.O.)` },
+			{
+				type: 'dialogue',
+				content: `Short and sweet.`,
+			},
+			{ type: 'action', content: 'Beat. Awkward silence. It lingers.' },
+			{ type: 'character', content: `Ryan (V.O.)` },
+			{
+				type: 'dialogue',
+				content: `Yeah, alright. You're right. Good call.`,
+			},
+			{
+				type: 'slugline',
+				content: `MONTAGE - SCRIPTS BY RYAN YOST & COREY SHARP`,
+			},
+			{
+				type: 'action',
+				content: `A) <b>FRANZ MADE ME FAMOUS</b> - A young, wannabe freedom fighter grapples with the nature of his work when he and his ragtag crew fumble their way through a life-defining mission to assassinate Franz Ferdinand, the royal dignitary of imperial Austria whose demise ignited the first world war.`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				content: `feature / comedy / <a href="https://google.com" style="color: #0000EE;">click to read</a>`,
+			},
+			{ type: 'action', content: '', disableEdit: true },
+			{
+				type: 'action',
+				content: `B) <b>SAVED</b> - After God finally gives up on Earth in 2020, a disillusioned but determined Jesus has one last chance to save humanity from itself and prove daddy wrong - by getting down and dirty in U.S. politics and setting his sights on the White House.`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				content: `pilot / half hour comedy / <a href="https://google.com" style="color: #551a8b;">click to read</a>`,
+			},
+			{ type: 'action', content: '', disableEdit: true },
+			{
+				type: 'action',
+				content: `C) <b>COPING</b> - When a rudderless twentysomething accidentally gets hired as an enforcer for a mysterious criminal organization, she’ll need her potent personality and weed dealer friend to excel in the new gig... and simply stay alive.`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				content: `pilot / half hour comedy / <a href="https://google.com" style="color: #551a8b;">click to read</a>`,
+			},
+			{ type: 'action', content: '', disableEdit: true },
+			{
+				type: 'action',
+				content: `D) <b>MAC'S DAD COMES OUT</b> - When Luther comes out as gay at his parole hearing, the gang can’t agree on whether he should stay in prison.
+`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				content: `spec / It's Always Sunny in Philadelphia /  <a href="https://drive.google.com/file/d/1UdV_O2MTEj6cMHxFk_0UtYumeXBBYMR1/view" style="color: #551a8b;">click to read</a>`,
 			},
 
 			// eyes reflecting on the screen. They are wide, intrigued. The eyes
@@ -96,13 +174,21 @@
 
 				visibleSections[currentSectionIndex] = currentSection;
 			}
-		}, 75);
+		}, 40);
 	}
 
 	onMount(() => {
 		setSlugTime();
 		generateContent();
-		runTypingAnimation();
+
+		if (!window.localStorage.getItem('skipAnimation')) {
+			runTypingAnimation();
+			window.localStorage.setItem('skipAnimation', 'true');
+		} else {
+			visibleSections = [...sections].map((s) => {
+				return { ...s, visible: s.content };
+			});
+		}
 	});
 
 	// $: console.log({ wsections, currentSectionIndex, visibleSections });
@@ -120,22 +206,50 @@
 
 <div id="document">
 	{#if device}
-		{#each visibleSections as { type, visible, active }}
-			<div class="{type} line {active && 'active'}" contenteditable="true">
+		{#each visibleSections as { type, visible, active, disableEdit }}
+			<div
+				class="{type} line {active ? 'active' : ''}"
+				contenteditable={!disableEdit}
+			>
 				{@html visible}
-				<span id="cursor" class={!active && 'inactive'} contenteditable="false"
-					>|</span
+				<span
+					id="cursor"
+					class={!active ? 'inactive' : ''}
+					contenteditable="false">|</span
 				>
 			</div>
 		{/each}
 	{/if}
 </div>
-å
 <!--<iframe-->
 <!--	src="https://yostandsharp.s3.us-east-2.amazonaws.com/Macs+Dad+Comes+Out+-+Always+Sunny+Spec+-+Yost%2BSharp.pdf"-->
 <!--	width="{windowWidth}"-->
 <!--	height="{windowHeight}"-->
 <!-- TODO SKIP ANIMATION BUTTON -->
+
+<!--{-->
+<!--"Version": "2012-10-17",-->
+<!--"Id": "http referer policy example",-->
+<!--"Statement": [-->
+<!--{-->
+<!--"Sid": "Allow get requests originating from www.example.com and example.com.",-->
+<!--"Effect": "Allow",-->
+<!--"Principal": "*",-->
+<!--"Action": "s3:GetObject",-->
+<!--"Resource": "arn:aws:s3:::yostandsharp/*",-->
+<!--"Condition": {-->
+<!--"StringLike": {-->
+<!--"aws:Referer": [-->
+<!--"https://www.yostandsharp.com/*",-->
+<!--"https://yostandsharp.com/*",-->
+<!--"https://festive-snyder-7ff31f.netlify.app/*",-->
+<!--"https://www.festive-snyder-7ff31f.netlify.app/*"-->
+<!--]-->
+<!--}-->
+<!--}-->
+<!--}-->
+<!--]-->
+<!--}-->
 
 <!--/>-->
 <style>
@@ -147,9 +261,9 @@
 		padding-top: 1in;
 		padding-bottom: 1in;
 		padding-left: 1.5in;
-		padding-right: 1.5in;
+		padding-right: 1in;
 		font-size: 16px;
-		color: rgba(0, 0, 0, 1);
+		/*color: rgba(0, 0, 0, 1);*/
 		/*font-weight: bold;*/
 	}
 
@@ -162,6 +276,14 @@
 		-moz-animation: fadeinout 1s ease infinite;
 		-o-animation: fadeinout 1s ease infinite;
 		-ms-animation: fadeinout 1s ease infinite;
+	}
+
+	.link {
+		color: red !important;
+	}
+
+	.link:visited {
+		color: #551a8b !important;
 	}
 
 	.inactive {
@@ -188,10 +310,24 @@
 	.slugline {
 		font-weight: bold;
 		text-transform: uppercase;
+		min-width: 100%;
 	}
 
 	.slugline:not(:first-child) {
 		margin-top: 32px;
+	}
+
+	.character {
+		text-transform: uppercase;
+		margin-top: 16px;
+		white-space: pre-wrap;
+		margin-left: 2.2in;
+	}
+
+	.dialogue {
+		white-space: pre-wrap;
+		margin-left: 1.5in;
+		margin-right: 1.5in;
 	}
 
 	.action {
