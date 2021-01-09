@@ -37,14 +37,18 @@
 		}`;
 
 		if (!device.device.brand) {
-			return `a ${type}`;
+			return `a ${type}.`;
 		}
+
+		const flipSideText = `The visitor ROTATES their phone so that it's horizontal, easier to read.`;
 
 		return `${
 			['a', 'e', 'i', 'o', 'u'].includes(device.device.brand[0].toLowerCase())
 				? 'an'
 				: 'a'
-		} ${device.device.brand} ${type}`;
+		} ${device.device.brand} ${type}. ${
+			device.device.type === 'smartphone' ? flipSideText : ''
+		}`;
 	}
 
 	function generateContent() {
@@ -55,7 +59,7 @@
 			{ type: 'slugline', content: `INT. UNKNOWN - ${slugTime}` },
 			{
 				type: 'action',
-				content: `A curious VISITOR stares at the screen of ${deviceToDisplay}. The time reads <b>${time}<b>.`,
+				content: `A curious VISITOR stares at the screen of ${deviceToDisplay} The time reads <b>${time}<b>.`,
 			},
 			{ type: 'slugline', content: `ON SCREEN` },
 			{
@@ -83,7 +87,7 @@
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{
 				type: 'dialogue',
-				content: `Yeah, alright. You're right. Good call.`,
+				content: `Yeah, you're right. Good call.`,
 			},
 			{
 				type: 'slugline',
@@ -96,7 +100,7 @@
 			{
 				type: 'action',
 				disableEdit: true,
-				content: `feature / comedy / <a href="https://google.com" style="color: #0000EE;">click to read</a>`,
+				content: `feature / comedy / <a href="https://google.com" style="color: #0000EE; font-size: 16px;">click to read</a>`,
 			},
 			{ type: 'action', content: '', disableEdit: true },
 			{
@@ -106,7 +110,7 @@
 			{
 				type: 'action',
 				disableEdit: true,
-				content: `pilot / half hour comedy / <a href="https://google.com" style="color: #551a8b;">click to read</a>`,
+				content: `pilot / half hour comedy / <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
 			},
 			{ type: 'action', content: '', disableEdit: true },
 			{
@@ -116,7 +120,7 @@
 			{
 				type: 'action',
 				disableEdit: true,
-				content: `pilot / half hour comedy / <a href="https://google.com" style="color: #551a8b;">click to read</a>`,
+				content: `pilot / half hour comedy / <a href="https://google.com" style="color: #551a8b; font-size: 16px;">click to read</a>`,
 			},
 			{ type: 'action', content: '', disableEdit: true },
 			{
@@ -127,7 +131,7 @@
 			{
 				type: 'action',
 				disableEdit: true,
-				content: `spec / It's Always Sunny in Philadelphia /  <a href="https://drive.google.com/file/d/1UdV_O2MTEj6cMHxFk_0UtYumeXBBYMR1/view" style="color: #551a8b;">click to read</a>`,
+				content: `spec / It's Always Sunny in Philadelphia /  <a href="https://drive.google.com/file/d/1UdV_O2MTEj6cMHxFk_0UtYumeXBBYMR1/view" style="color: #551a8b; font-size: 16px;">click to read</a>`,
 			},
 
 			// eyes reflecting on the screen. They are wide, intrigued. The eyes
