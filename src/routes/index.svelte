@@ -32,8 +32,11 @@
 	function setDevice(userAgent) {
 		const deviceDetector = new DeviceDetector();
 		device = deviceDetector.parse(userAgent);
+
 		const type = `${
-			device.device.type === 'desktop' ? 'desktop computer' : device.device.type
+			device.device.type === 'desktop'
+				? 'computer'
+				: device.device.type || 'device'
 		}`;
 
 		if (!device.device.brand) {
@@ -46,8 +49,12 @@
 			['a', 'e', 'i', 'o', 'u'].includes(device.device.brand[0].toLowerCase())
 				? 'an'
 				: 'a'
-		} ${device.device.brand} ${type}. ${
-			device.device.type === 'smartphone' ? flipSideText : ''
+		} ${device.device.brand || ''} ${type}. ${
+			device.device.type === 'smartphone'
+				? flipSideText
+				: windowWidth < 600
+				? flipSideText
+				: ''
 		}`;
 	}
 
@@ -76,6 +83,7 @@
 			{
 				type: 'dialogue',
 				content: `Just show them the scripts.`,
+				skipAnimation: true,
 			},
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{
@@ -102,6 +110,7 @@
 			},
 			{
 				type: 'action',
+				skipAnimation: true,
 				content: `a) <b>FRANZ MADE ME FAMOUS</b> - A young, wannabe freedom fighter grapples with the nature of his work when he and his ragtag crew fumble their way through a life-defining mission to assassinate Franz Ferdinand, the royal dignitary of imperial Austria whose demise ignited the first world war.`,
 			},
 			{
@@ -113,6 +122,7 @@
 			// { type: 'action', content: '', disableEdit: true },
 			{
 				type: 'action',
+				skipAnimation: true,
 				content: `b) <b>SAVED</b> - After God finally gives up on Earth in 2020, a disillusioned but determined Jesus has one last chance to save humanity from itself and prove daddy wrong - by getting down and dirty in U.S. politics and setting his sights on the White House.`,
 			},
 			{
@@ -124,6 +134,7 @@
 			// { type: 'action', content: '', disableEdit: true },
 			{
 				type: 'action',
+				skipAnimation: true,
 				content: `c) <b>COPING</b> - When a rudderless twentysomething accidentally gets hired as an enforcer for a mysterious criminal organization, she’ll need her potent personality and weed dealer friend to excel in the new gig... and simply stay alive.`,
 			},
 			{
@@ -135,6 +146,7 @@
 			// { type: 'action', content: '', disableEdit: true },
 			{
 				type: 'action',
+				skipAnimation: true,
 				content: `d) <b>MAC'S DAD COMES OUT</b> - When Luther comes out as gay at his parole hearing, the gang can’t agree on whether he should stay in prison. (Always Sunny in Philadelphia spec)
 			`,
 			},
@@ -165,7 +177,7 @@
 				default: 25,
 			};
 
-			if (currentSection.skipAnimation) return 1;
+			if (currentSection.skipAnimation) return 0;
 
 			function periodHandler() {
 				if (currentSection.type === 'character') {
@@ -287,8 +299,9 @@
 
 		if (!window.localStorage.getItem('skipAnimation')) {
 			runTypingAnimation();
-			// window.localStorage.setItem('skipAnimation', 'true');
+			window.localStorage.setItem('skipAnimation', 'true');
 		} else {
+			currentSectionIndex = -1
 			visibleSections = [...sections].map((s) => {
 				return { ...s, visible: s.content };
 			});
@@ -314,7 +327,7 @@
 				{@html visible}
 				<span
 					id="cursor"
-					class={!active ? 'inactive' : ''}
+					class={i !== currentSectionIndex ? 'inactive' : ''}
 					contenteditable="false">|</span
 				>
 			</div>
