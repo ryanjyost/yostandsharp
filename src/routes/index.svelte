@@ -83,7 +83,10 @@
 				type: 'dialogue',
 				content: `People are busy.`,
 			},
-			{ type: 'action', content: 'Beat. The visitor wonders what the hell is going on.' },
+			{
+				type: 'action',
+				content: 'Beat. The visitor wonders what the hell is going on.',
+			},
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{
 				type: 'dialogue',
@@ -315,22 +318,25 @@
 	{/if}
 </div>
 
-<!--<nav>-->
-<!--	<ul>-->
-<!--		<li>-->
-<!--			<a href=".">home</a>-->
-<!--		</li>-->
-<!--		<li>-->
-<!--			<a href="about">about</a>-->
-<!--		</li>-->
-
-<!--		&lt;!&ndash; for the blog link, we're using rel=prefetch so that Sapper prefetches-->
-<!--		     the blog data when we hover over the link or tap it on a touchscreen &ndash;&gt;-->
-<!--		<li>-->
-<!--			<a rel="prefetch" href="blog">blog</a>-->
-<!--		</li>-->
-<!--	</ul>-->
-<!--</nav>-->
+<nav>
+	<ul>
+		<li>
+			<a href=".">home</a>
+		</li>
+		<li>
+			<a href="/scripts/franz-made-me-famous">Franz Made Me Famous</a>
+		</li>
+		<li>
+			<a href="/scripts/saved">Saved</a>
+		</li>
+		<li>
+			<a href="/scripts/coping">Coping</a>
+		</li>
+		<li>
+			<a href="/scripts/always-sunny-spec">Mac's Dad Comes Out</a>
+		</li>
+	</ul>
+</nav>
 <!--<iframe-->
 <!--	src="https://yostandsharp.s3.us-east-2.amazonaws.com/Macs+Dad+Comes+Out+-+Always+Sunny+Spec+-+Yost%2BSharp.pdf"-->
 <!--	width="{windowWidth}"-->
@@ -363,6 +369,10 @@
 
 <!--/>-->
 <style>
+	nav {
+		opacity: 0;
+	}
+
 	#document {
 		width: 8.5in;
 		/*width: 100%;*/
