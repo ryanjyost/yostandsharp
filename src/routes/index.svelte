@@ -289,8 +289,6 @@
 	});
 
 	// $: console.log({ wsections, currentSectionIndex, visibleSections });
-
-	$: console.log({ visibleSections });
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
@@ -316,6 +314,23 @@
 		{/each}
 	{/if}
 </div>
+
+<nav>
+	<ul>
+		<li>
+			<a href=".">home</a>
+		</li>
+		<li>
+			<a href="about">about</a>
+		</li>
+
+		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
+		     the blog data when we hover over the link or tap it on a touchscreen -->
+		<li>
+			<a rel="prefetch" href="blog">blog</a>
+		</li>
+	</ul>
+</nav>
 <!--<iframe-->
 <!--	src="https://yostandsharp.s3.us-east-2.amazonaws.com/Macs+Dad+Comes+Out+-+Always+Sunny+Spec+-+Yost%2BSharp.pdf"-->
 <!--	width="{windowWidth}"-->
