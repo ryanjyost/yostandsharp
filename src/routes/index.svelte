@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import DeviceDetector from 'device-detector-js';
 	import { format } from 'date-fns';
+	import { scriptLinks } from '../helpers';
 
 	let windowWidth;
 	let windowHeight;
@@ -61,6 +62,17 @@
 	function generateContent() {
 		const deviceToDisplay = setDevice(window.navigator.userAgent);
 		const time = format(new Date(), 'h:mm a');
+		// const isBrowser =
+		// 	device &&
+		// 	device.client.type === 'browser' &&
+		// 	device.device.type === 'desktop';
+
+		const linkText = 'click to read';
+
+		const links = Object.entries(scriptLinks).reduce((acc, [key, value]) => {
+			acc[key] = `/scripts/${key}`;
+			return acc;
+		}, {});
 
 		sections = [
 			{ type: 'slugline', content: `INT. UNKNOWN - ${slugTime}` },
@@ -117,7 +129,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="/scripts/franz-made-me-famous" style="color: #0000EE; font-size: 16px;">click to read</a>`,
+				content: `> <a href="${links['franz-made-me-famous']}" style="color: #551a8b; font-size: 16px;">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -129,7 +141,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="/scripts/saved" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+				content: `> <a href="${links['saved']}" style="color: #551a8b; font-size: 16px;">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -141,7 +153,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="/scripts/coping" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+				content: `> <a href="${links['coping']}" style="color: #551a8b; font-size: 16px;">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -154,7 +166,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="/scripts/always-sunny-spec" style="color: #551a8b; font-size: 16px;">click to read</a>`,
+				content: `> <a href="${links['always-sunny-spec']}" style="color: #551a8b; font-size: 16px;">${linkText}</a>`,
 			},
 
 			// eyes reflecting on the screen. They are wide, intrigued. The eyes
@@ -301,14 +313,12 @@
 			runTypingAnimation();
 			window.localStorage.setItem('skipAnimation', 'true');
 		} else {
-			currentSectionIndex = -1
+			currentSectionIndex = -1;
 			visibleSections = [...sections].map((s) => {
 				return { ...s, visible: s.content };
 			});
 		}
 	});
-
-	// $: console.log({ wsections, currentSectionIndex, visibleSections });
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
@@ -400,6 +410,7 @@
 		padding-left: 1.5in;
 		padding-right: 1in;
 		font-size: 16px;
+
 		/*color: rgba(0, 0, 0, 1);*/
 		/*font-weight: bold;*/
 	}
