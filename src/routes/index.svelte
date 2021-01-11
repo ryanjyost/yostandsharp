@@ -68,8 +68,10 @@
 		// 	device.device.type === 'desktop';
 
 		const linkText = 'click to read';
+		const linkStyle =
+			'color: #551a8b; width: 100%; margin-bottom: 40px; display: block; text-align: right;';
 
-		const links = Object.entries(scriptLinks).reduce((acc, [key, value]) => {
+		const links = Object.entries(scriptLinks).reduce((acc, [key]) => {
 			acc[key] = `/scripts/${key}`;
 			return acc;
 		}, {});
@@ -129,7 +131,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="${links['franz-made-me-famous']}" style="color: #551a8b; font-size: 16px;">${linkText}</a>`,
+				content: `<a href="${links['franz-made-me-famous']}" style="${linkStyle}">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -141,7 +143,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="${links['saved']}" style="color: #551a8b; font-size: 16px;">${linkText}</a>`,
+				content: `<a href="${links['saved']}" style="${linkStyle}">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -153,7 +155,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="${links['coping']}" style="color: #551a8b; font-size: 16px;">${linkText}</a>`,
+				content: `<a href="${links['coping']}" style="${linkStyle}">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -166,7 +168,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `> <a href="${links['always-sunny-spec']}" style="color: #551a8b; font-size: 16px;">${linkText}</a>`,
+				content: `<a href="${links['always-sunny-spec']}" style="${linkStyle}">${linkText}</a>`,
 			},
 
 			// eyes reflecting on the screen. They are wide, intrigued. The eyes
@@ -398,6 +400,12 @@
 <style>
 	nav {
 		opacity: 0;
+	}
+
+	a {
+		font-size: 16px !important;
+		width: 100%;
+		text-align: right;
 	}
 
 	#document {

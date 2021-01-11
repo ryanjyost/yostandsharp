@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { goto } from '@sapper/app';
+	import DeviceDetector from 'device-detector-js';
 	import { scriptLinks } from '../../helpers';
 	let windowWidth;
 	let windowHeight;
@@ -10,7 +11,16 @@
 		const { pathname } = window.location;
 		const key = pathname.split('/')[2];
 
-		link = scriptLinks[key];
+		const deviceDetector = new DeviceDetector();
+		const device = deviceDetector.parse(window.navigator.userAgent);
+		const isBrowser =
+			device &&
+			device.client.type === 'browser' &&
+			device.device.type === 'desktop';
+
+		const links = scriptLinks[key];
+
+		link = isBrowser ? links['aws'] : links['gdrive'];
 
 		if (!link) {
 			goto('/');
@@ -20,26 +30,21 @@
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
-<iframe
-	id="pdfViewer"
-	type="application/pdf"
-	title="script-preview"
-	src={link}
-/>
+<div
+	style="overflow: auto!important; -webkit-overflow-scrolling: touch!important;"
+>
+	<iframe
+		id="pdfViewer"
+		type="application/pdf"
+		style="position: absolute; top: 0; left: 0;"
+		src="{link}"
+		width="100%"
+		height="100%"
+	/>
+</div>
 
 <style>
-	#pdfViewer {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		bottom: 0px;
-		right: 0px;
-		width: 100%;
-		height: 100%;
-		border: none;
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-		z-index: 999999;
-	}
+	/*#pdfViewer {*/
+	/*	-webkit-overflow-scrolling: touch !important;*/
+	/*}*/
 </style>
