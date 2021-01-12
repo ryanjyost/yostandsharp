@@ -69,7 +69,7 @@
 
 		const linkText = 'click to read';
 		const linkStyle =
-			'color: #551a8b; width: 100%; margin-bottom: 40px; display: block; text-align: right;';
+			'color: #551a8b; width: 100%; margin-bottom: 40px; display: block; text-align: left;';
 
 		const links = Object.entries(scriptLinks).reduce((acc, [key]) => {
 			acc[key] = `/scripts/${key}`;
