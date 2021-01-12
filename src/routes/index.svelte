@@ -131,7 +131,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `<a href="${links['franz-made-me-famous']}" style="${linkStyle}">${linkText}</a>`,
+				content: `<a href="${links['franz-made-me-famous']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -143,7 +143,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `<a href="${links['saved']}" style="${linkStyle}">${linkText}</a>`,
+				content: `<a href="${links['saved']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -155,7 +155,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `<a href="${links['coping']}" style="${linkStyle}">${linkText}</a>`,
+				content: `<a href="${links['coping']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 			{
@@ -168,7 +168,7 @@
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
-				content: `<a href="${links['always-sunny-spec']}" style="${linkStyle}">${linkText}</a>`,
+				content: `<a href="${links['always-sunny-spec']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
 			},
 
 			// eyes reflecting on the screen. They are wide, intrigued. The eyes
