@@ -89,7 +89,7 @@
 			},
 			{
 				type: 'action',
-				content: `Their contact info is prominent: <b>412.841.1697</b> and <b>ryanjyost@gmail.com</b>.`,
+				content: `Their contact info is prominent: <b>412.841.1697</b> and <b>yostandsharp@gmail.com</b>.`,
 			},
 			{ type: 'character', content: `Ryan (V.O.)` },
 			{ type: 'dialogue', content: `Welcome to our-` },
@@ -125,7 +125,20 @@
 			{
 				type: 'action',
 				skipAnimation: true,
-				content: `a) <b>FRANZ MADE ME FAMOUS</b> - A young, wannabe freedom fighter grapples with the nature of his work when he and his ragtag crew fumble their way through a life-defining mission to assassinate Franz Ferdinand, the royal dignitary of imperial Austria whose demise ignited the first world war.`,
+				content: `- <b>EVERYBODY'S GOT THEIR DEMONS</b> - An animated comedy series about a degenerate who grapples with her religious faith and opts to pursues nunhood to escape the torment of diabolically creative demons who will stop at nothing to make her and everyone else succumb to the dark side of life.
+			`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				skipAnimation: true,
+				content: `<a href="${links['demons']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
+			},
+
+			{
+				type: 'action',
+				skipAnimation: true,
+				content: `- <b>FRANZ MADE ME FAMOUS</b> - A young, wannabe freedom fighter grapples with the nature of his work when he and his ragtag crew fumble their way through a life-defining mission to assassinate Franz Ferdinand, the royal dignitary of imperial Austria whose demise ignited the first world war.`,
 			},
 			{
 				type: 'action',
@@ -137,7 +150,7 @@
 			{
 				type: 'action',
 				skipAnimation: true,
-				content: `b) <b>SAVED</b> - After God finally gives up on Earth in 2020, a disillusioned but determined Jesus has one last chance to save humanity from itself and prove daddy wrong - by getting down and dirty in U.S. politics and setting his sights on the White House.`,
+				content: `- <b>SAVED</b> - After God finally gives up on Earth in 2020, a disillusioned but determined Jesus has one last chance to save humanity from itself and prove daddy wrong - by getting down and dirty in U.S. politics and setting his sights on the White House.`,
 			},
 			{
 				type: 'action',
@@ -149,7 +162,7 @@
 			{
 				type: 'action',
 				skipAnimation: true,
-				content: `c) <b>COPING</b> - When a rudderless twentysomething accidentally gets hired as an enforcer for a mysterious criminal organization, she’ll need her potent personality and weed dealer friend to excel in the new gig... and simply stay alive.`,
+				content: `- <b>COPING</b> - When a rudderless twentysomething accidentally gets hired as an enforcer for a mysterious criminal organization, she’ll need her potent personality and weed dealer friend to excel in the new gig... and simply stay alive.`,
 			},
 			{
 				type: 'action',
@@ -158,18 +171,6 @@
 				content: `<a href="${links['coping']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
-			{
-				type: 'action',
-				skipAnimation: true,
-				content: `d) <b>MAC'S DAD COMES OUT</b> - When Luther comes out as gay at his parole hearing, the gang can’t agree on whether he should stay in prison. (Always Sunny in Philadelphia spec)
-			`,
-			},
-			{
-				type: 'action',
-				disableEdit: true,
-				skipAnimation: true,
-				content: `<a href="${links['always-sunny-spec']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
-			},
 
 			// eyes reflecting on the screen. They are wide, intrigued. The eyes
 			// us talking at same time and bickering about it

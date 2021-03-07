@@ -26,4 +26,8 @@ export const scriptLinks = {
 		gdrive:
 			'https://drive.google.com/file/d/1LyjEune3e28R4P3Y50qZQR9mCJVYAc-a/preview',
 	},
+	'demons':{
+		aws: "https://yostandsharp.s3.us-east-2.amazonaws.com/Everybody's+Got+Their+Demons+-+Pilot.pdf",
+		gdrive: "https://drive.google.com/file/d/1eplzGda7RT6XUpt43W_JyGew6Ey0piOV/preview"
+	}
 };
