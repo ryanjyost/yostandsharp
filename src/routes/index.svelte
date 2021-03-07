@@ -354,6 +354,9 @@
 			<a href=".">home</a>
 		</li>
 		<li>
+			<a href="/scripts/demons">Demons</a>
+		</li>
+		<li>
 			<a href="/scripts/franz-made-me-famous">Franz Made Me Famous</a>
 		</li>
 		<li>
