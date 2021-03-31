@@ -125,7 +125,7 @@
 			{
 				type: 'action',
 				skipAnimation: true,
-				content: `- <b>EVERYBODY'S GOT THEIR DEMONS</b> - An animated comedy series about a degenerate who grapples with her religious faith and opts to pursues nunhood to escape the torment of diabolically creative demons who will stop at nothing to make her and everyone else succumb to the dark side of life.
+				content: `- <b>EVERYBODY'S GOT THEIR DEMONS</b> - An animated comedy series about a degenerate who grapples with her religious faith and opts to pursue nunhood to escape the torment of diabolically creative demons who will stop at nothing to make her and everyone else succumb to the dark side of life.
 			`,
 			},
 			{
@@ -414,6 +414,7 @@
 
 	#document {
 		width: 8.5in;
+		max-width: 100%;
 		/*width: 100%;*/
 		min-height: 100vh;
 		margin: auto;
