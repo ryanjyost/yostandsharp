@@ -380,6 +380,9 @@
 		<li>
 			<a href="/scripts/always-sunny-spec">Mac's Dad Comes Out</a>
 		</li>
+		<li>
+			<a href="/scripts/pen-island">Pen Island</a>
+		</li>
 	</ul>
 </nav>
 <!--<iframe-->
