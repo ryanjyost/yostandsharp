@@ -26,8 +26,16 @@ export const scriptLinks = {
 		gdrive:
 			'https://drive.google.com/file/d/1LyjEune3e28R4P3Y50qZQR9mCJVYAc-a/preview',
 	},
-	'demons':{
-		aws: "https://yostandsharp.s3.us-east-2.amazonaws.com/Everybody's+Got+Their+Demons+-+Pilot.pdf",
-		gdrive: "https://drive.google.com/file/d/1eplzGda7RT6XUpt43W_JyGew6Ey0piOV/preview"
-	}
+	demons: {
+		aws:
+			"https://yostandsharp.s3.us-east-2.amazonaws.com/Everybody's+Got+Their+Demons+-+Pilot.pdf",
+		gdrive:
+			'https://drive.google.com/file/d/1eplzGda7RT6XUpt43W_JyGew6Ey0piOV/preview',
+	},
+	'pen-island': {
+		aws:
+			'https://yostandsharp.s3.us-east-2.amazonaws.com/PEN+ISLAND+by+Corey+Sharp+%26+Ryan+Yost.pdf',
+		gdrive:
+			'https://drive.google.com/file/d/1LBaJ1SlDm_c6R8_5tAvlGnn3ylP6NW_v/preview',
+	},
 };

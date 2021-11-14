@@ -125,7 +125,29 @@
 			{
 				type: 'action',
 				skipAnimation: true,
-				content: `- <b>EVERYBODY'S GOT THEIR DEMONS</b> - An animated comedy series about a degenerate who grapples with her religious faith and opts to pursue nunhood to escape the torment of diabolically creative demons who will stop at nothing to make her and everyone else succumb to the dark side of life.
+				content: `<b>SAVED</b> (Pilot) - After God finally gives up on Earth in 2020, a disillusioned but determined Jesus has one last chance to save humanity from itself and prove daddy wrong - by getting down and dirty in U.S. politics and setting his sights on the White House.`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				skipAnimation: true,
+				content: `<a href="${links['saved']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
+			},
+			{
+				type: 'action',
+				skipAnimation: true,
+				content: `<b>FRANZ MADE ME FAMOUS</b> (Feature) - A young, wannabe freedom fighter grapples with the nature of his work when he and his ragtag crew fumble their way through a life-defining mission to assassinate Franz Ferdinand, the royal dignitary of imperial Austria whose demise ignited the first world war.`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				skipAnimation: true,
+				content: `<a href="${links['franz-made-me-famous']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
+			},
+			{
+				type: 'action',
+				skipAnimation: true,
+				content: `<b>EVERYBODY'S GOT THEIR DEMONS</b> (Pilot) - An animated comedy series about a degenerate who grapples with her religious faith and opts to pursue nunhood to escape the torment of diabolically creative demons who will stop at nothing to make her and everyone else succumb to the dark side of life.
 			`,
 			},
 			{
@@ -135,40 +157,30 @@
 				content: `<a href="${links['demons']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
 			},
 
-			{
-				type: 'action',
-				skipAnimation: true,
-				content: `- <b>FRANZ MADE ME FAMOUS</b> - A young, wannabe freedom fighter grapples with the nature of his work when he and his ragtag crew fumble their way through a life-defining mission to assassinate Franz Ferdinand, the royal dignitary of imperial Austria whose demise ignited the first world war.`,
-			},
-			{
-				type: 'action',
-				disableEdit: true,
-				skipAnimation: true,
-				content: `<a href="${links['franz-made-me-famous']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
-			},
+			// { type: 'action', content: '', disableEdit: true },
+
 			// { type: 'action', content: '', disableEdit: true },
 			{
 				type: 'action',
 				skipAnimation: true,
-				content: `- <b>SAVED</b> - After God finally gives up on Earth in 2020, a disillusioned but determined Jesus has one last chance to save humanity from itself and prove daddy wrong - by getting down and dirty in U.S. politics and setting his sights on the White House.`,
-			},
-			{
-				type: 'action',
-				disableEdit: true,
-				skipAnimation: true,
-				content: `<a href="${links['saved']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
-			},
-			// { type: 'action', content: '', disableEdit: true },
-			{
-				type: 'action',
-				skipAnimation: true,
-				content: `- <b>COPING</b> - When a rudderless twentysomething accidentally gets hired as an enforcer for a mysterious criminal organization, she’ll need her potent personality and weed dealer friend to excel in the new gig... and simply stay alive.`,
+				content: `<b>COPING</b> (Pilot) - When a rudderless twentysomething accidentally gets hired as an enforcer for a mysterious criminal organization, she’ll need her potent personality and weed dealer friend to excel in the new gig... and simply stay alive.`,
 			},
 			{
 				type: 'action',
 				disableEdit: true,
 				skipAnimation: true,
 				content: `<a href="${links['coping']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
+			},
+			{
+				type: 'action',
+				skipAnimation: true,
+				content: `<b>PEN ISLAND</b> (Short) - Where pens rule and pencils drool.`,
+			},
+			{
+				type: 'action',
+				disableEdit: true,
+				skipAnimation: true,
+				content: `<a href="${links['pen-island']}" target="_blank" style="${linkStyle}">${linkText}</a>`,
 			},
 			// { type: 'action', content: '', disableEdit: true },
 
