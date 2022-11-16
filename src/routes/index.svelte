@@ -342,6 +342,9 @@
 	<title>Ryan Yost & Corey Sharp</title>
 </svelte:head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2FQSQYX5G3"></script>
+
 <div id="document">
 	{#if device}
 		{#each visibleSections as { type, visible, active, disableEdit }, i}
