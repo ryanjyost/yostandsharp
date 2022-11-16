@@ -3,7 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1,maximum-scale=1"
+		/>
 
 		<meta name="theme-color" content="#333333" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -43,10 +46,20 @@
 			}
 			body {
 				box-sizing: border-box;
-				display:block;
+				display: block;
 			}
 		</style>
 	</head>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		// deploy
+		gtag('config', 'G-2FQSQYX5G3');
+	</script>
 	<body>
 		<!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
