@@ -31,7 +31,7 @@
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
 <div
-	style="overflow: auto!important; -webkit-overflow-scrolling: touch!important;"
+	style="ooverflow: auto!important; -webkit-overflow-scrolling: touch!important;"
 >
 	<iframe
 		id="pdfViewer"

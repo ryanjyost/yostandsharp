@@ -324,15 +324,15 @@
 		setSlugTime();
 		generateContent();
 
-		if (!window.localStorage.getItem('skipAnimation')) {
-			runTypingAnimation();
-			window.localStorage.setItem('skipAnimation', 'true');
-		} else {
-			currentSectionIndex = -1;
-			visibleSections = [...sections].map((s) => {
-				return { ...s, visible: s.content };
-			});
-		}
+		// if (!window.localStorage.getItem('skipAnimation')) {
+		// 	runTypingAnimation();
+		// 	window.localStorage.setItem('skipAnimation', 'true');
+		// } else {
+		currentSectionIndex = -1;
+		visibleSections = [...sections].map((s) => {
+			return { ...s, visible: s.content };
+		});
+		// }
 	});
 </script>
 
